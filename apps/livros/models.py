@@ -37,7 +37,9 @@ class Livros(models.Model):
     nome = models.CharField(max_length=120, blank = False , null = False)
     slug = models.SlugField(null = False, blank= False)
     sinopse = models.TextField(max_length=1200, blank = False, null = False)
+    estoque =  models.PositiveIntegerField(default = 1, blank = False)
     paginas = models.PositiveIntegerField(default = 1, blank = False)
+    imagem = models.ImageField(upload_to='assets/imgs/%Y/%m/', null = True,)
     autor = models.ForeignKey(Autor, on_delete = models.CASCADE)
     genero = models.ForeignKey(Genero, on_delete = models.SET_NULL , null = True)
 
