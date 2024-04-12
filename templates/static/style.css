@@ -3,3 +3,32 @@
     padding: 0;
     box-sizing: border-box;
 }
+
+/*Utils*/
+
+.spacing{
+    padding-top: 4.2rem;
+}
+
+/*Classes*/
+
+.navbar{
+    position: fixed;
+    z-index: 1;
+    width: 100%;
+    color: white;
+    padding: 1rem 0;
+}
+
+.nav-link, .nav-link.active {
+    color: white !important;
+}
+
+.nav-link.disabled{
+    color: rgba(255, 255, 255, 0.466) !important;
+}
+
+.heading-navbar{
+    font-size: 2rem;
+    margin-bottom: 0;
+}
