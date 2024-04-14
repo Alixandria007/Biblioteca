@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.core.paginator import Paginator
 from .  import models
 
@@ -58,3 +58,13 @@ def genero(request,id):
     }
 
     return render(request, 'index.html', context)
+
+def ver_autores(request):
+    autores = models.Autor.objects.all()
+
+    context = {
+        'autores' : autores 
+    }
+    
+
+    return render(request, 'ver_autores.html', context)

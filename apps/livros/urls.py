@@ -8,4 +8,5 @@ urlpatterns = [
     path('livro/<slug:slug>', views.livro, name='livro'),
     path('autor/<int:id>', views.autor, name='autor'),
     path('genero/<int:id>', views.genero, name='genero'),
+    path('autores/', views.ver_autores, name='ver_autores'),
 ]
