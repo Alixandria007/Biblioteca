@@ -42,3 +42,19 @@ def autor(request,id):
     }
 
     return render(request, 'index.html', context)
+
+def genero(request,id):
+    genero_ = models.Livros.objects.filter(genero__id = id).order_by('-id')
+
+    paginator = Paginator(genero_, 20)
+    page_number = request.GET.get('page', None)
+    page_obj = paginator.get_page(page_number)
+
+    genero_name = models.Genero.objects.filter(id = id).first()
+
+    context = {
+        'page_obj': page_obj,
+        'title' : genero_name.nome
+    }
+
+    return render(request, 'index.html', context)

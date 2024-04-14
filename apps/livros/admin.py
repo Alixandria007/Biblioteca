@@ -22,7 +22,7 @@ class GeneroAdmin(admin.ModelAdmin):
 @admin.register(models.Livros)
 class LivrosAdmin(admin.ModelAdmin):
 
-    list_display = 'id', 'nome' , 'paginas' , 'autor' , 'genero'
+    list_display = 'id', 'nome' , 'paginas' , 'autor'
     list_display_links = 'id',
     list_editable  = 'nome', 'paginas'
     list_per_page = 10

@@ -44,7 +44,7 @@ class Livros(models.Model):
     paginas = models.PositiveIntegerField(default = 1, blank = False)
     imagem = models.ImageField(upload_to='assets/imgs/%Y/%m/', null = True,)
     autor = models.ForeignKey(Autor, on_delete = models.CASCADE)
-    genero = models.ForeignKey(Genero, on_delete = models.SET_NULL , null = True)
+    genero = models.ManyToManyField(to = Genero)
 
     def __str__(self):
         return f'{self.nome}'

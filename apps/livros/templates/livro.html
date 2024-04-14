@@ -23,7 +23,9 @@
         <p><a href="{% url "livros:autor" livro.autor.id %}">{{livro.autor}}</a></p>
 
         <span class="bold">Generos:</span>
-        <p>{{livro.genero}}</p>
+        <p>{% for genero in livro.genero.all %}
+            <a href="{% url "livros:genero" genero.id %}">{{genero}}</a>
+            {% endfor %}</p>
 
         <a href="" class="btn btn-primary mt-4">Adicionar ao emprestimo</a>
     </div>
