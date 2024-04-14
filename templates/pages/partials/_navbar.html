@@ -42,7 +42,7 @@
 
                 {% if request.session.previa_emprestimo %}
                     <li class="nav-item">  
-                        <a class="link" href="{% url "livros:index" %}">
+                        <a class="link" href="{% url "livros:previa_emprestimo" %}">
                             Previa {{request.session.previa_emprestimo|quant_previa}}x <i class="fa-solid fa-pen"></i>
                         </a>
                     </li>

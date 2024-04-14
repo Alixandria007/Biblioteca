@@ -16,7 +16,10 @@ a{
 
 .link{
     color: inherit;
-    text-decoration: none;
+}
+
+.link-red{
+    color: red;
 }
 
 .center{
@@ -35,6 +38,10 @@ a{
 
 .break-lines {
     white-space: pre-line;
+}
+
+.img-thumb{
+    max-width: 150px;
 }
 
 
@@ -85,4 +92,11 @@ a{
 
 .alert.warning{
     background: rgba(255, 255, 0, 0.253);
+}
+
+
+/*Preview*/
+
+.table-preview{
+    width: 100%;
 }

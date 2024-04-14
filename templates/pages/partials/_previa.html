@@ -1,0 +1,28 @@
+{% load ajfilters %}
+<div class="preview">
+    <table class="table-preview">
+        <thead class="header-preview">
+            <th>Imagem</th>
+            <th>Livro</th>
+            <th>Autor</th>
+            <th>Paginas</th>
+            <th>Excluir</th>
+        </thead>
+
+        <tbody class="body-preview">
+            {% for livro in previa.values %}
+                <tr>
+                    <td width="20%"><img class="img-thumb pt-2" src="/media/{{livro.imagem}}" alt=""></td>
+
+                    <td width="30%"><a class="link-blue" href="">{{livro.nome}}</a></td>
+
+                    <td width="30%">{{livro.autor}}</td>
+                    
+                    <td width="10%">{{livro.paginas}}</td>
+                    <td width="10%"><a class="link-red" href=""><i class="fa-solid fa-circle-xmark"></i></a></td>
+                </tr>
+
+            {% endfor %}
+        </tbody>
+    </table>
+</div>

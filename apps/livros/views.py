@@ -148,4 +148,11 @@ def adicionar_emprestimo(request):
 
         return redirect(request.META.get('HTTP_REFERER'))
 
+def previa_emprestimo(request):
+    previa = request.session['previa_emprestimo']
 
+    context = {
+        'previa' : previa
+    }
+
+    return render(request, 'previa_emprestimo.html', context)

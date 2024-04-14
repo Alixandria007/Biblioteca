@@ -10,4 +10,5 @@ urlpatterns = [
     path('genero/<int:id>', views.genero, name='genero'),
     path('autores/', views.ver_autores, name='ver_autores'),
     path('adicionar_emprestimo', views.adicionar_emprestimo, name='adicionar_emprestimo'),
+    path('previa_emprestimo', views.previa_emprestimo, name='previa_emprestimo'),
 ]
