@@ -10,10 +10,29 @@
     padding-top: 4.2rem;
 }
 
+.link{
+    color: inherit;
+    text-decoration: none;
+}
+
+.center{
+    text-align: center;
+}
+
+.bold{
+    font-weight: bold;
+}
+
 .main-content{
     max-width: 1200px;
     margin: 20px auto;
+    padding: 0 10px;
 }
+
+.break-lines {
+    white-space: pre-line;
+}
+
 
 /*Classes*/
 
@@ -36,4 +55,10 @@
 .heading-navbar{
     font-size: 2rem;
     margin-bottom: 0;
+}
+
+/*Livro*/
+
+.sinopse{
+    font-size: 14px;
 }

@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="row">
+    <div class="col-8">
+        <img src="{{livro.imagem.url}}" class="img-livro" alt="">
+    </div>
+
+    <div class="col-4">
+        <h3 class="center mb-4">{{livro.nome}}</h3>
+
+        <span class="bold">Sinopse curta:</span>
+        <p class="break-lines">{{livro.sinopse_curta}}</p>
+
+        <span class="bold">Quantidade de paginas:</span> 
+        <p>{{livro.paginas}} paginas</p>
+
+        <span class="bold">Quantidade em estoque:</span>
+        <p>{{livro.estoque}} livros em estoque</p>
+
+        <span class="bold">Autor:</span>
+        <p>{{livro.autor}}</p>
+
+        <span class="bold">Generos:</span>
+        <p>{{livro.genero}}</p>
+
+        <a href="" class="btn btn-primary mt-4">Adicionar ao emprestimo</a>
+    </div>
+
+    <div class="mt-4">
+        <h3 class="center">Sinopse Longa</h3>
+        <p class="break-lines">{{livro.sinopse_longa}}</p>
+    </div>
+</div>
+
+{% endblock content%}

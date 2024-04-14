@@ -16,3 +16,12 @@ def index(request):
     }
 
     return render(request, 'index.html', context)
+
+def livro(request, slug):
+    livro_ = models.Livros.objects.filter(slug = slug).first()
+
+    context = {
+        'livro' : livro_ 
+    }
+
+    return render(request, 'livro.html', context)
