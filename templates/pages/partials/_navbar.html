@@ -1,3 +1,4 @@
+{% load ajfilters %}
 <nav class="navbar navbar-expand-lg bg-primary">
     <div class="container-fluid">
         <h1 class="heading-navbar"><a class="link" href="{% url "livros:index" %}">Biblioteca</a></h1>
@@ -38,6 +39,14 @@
                         <li><a class="dropdown-item" href="#">Ver Usuarios Pendurados</a></li>
                     </ul>
                 </li>
+
+                {% if request.session.previa_emprestimo %}
+                    <li class="nav-item">  
+                        <a class="link" href="{% url "livros:index" %}">
+                            Previa {{request.session.previa_emprestimo|quant_previa}}x <i class="fa-solid fa-pen"></i>
+                        </a>
+                    </li>
+                {% endif %}
             </ul>
             
             <form class="d-flex col" role="search">

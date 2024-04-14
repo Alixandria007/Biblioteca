@@ -66,3 +66,23 @@ a{
 .sinopse{
     font-size: 14px;
 }
+
+/*messages*/
+
+.alert{
+    max-width: 30rem;
+    text-align: center;
+    margin: 10px auto;
+}
+
+.alert.error{
+    background: rgba(255, 0, 0, 0.267);
+}
+
+.alert.success{
+    background: rgba(21, 255, 0, 0.281);
+}
+
+.alert.warning{
+    background: rgba(255, 255, 0, 0.253);
+}

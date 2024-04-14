@@ -17,3 +17,7 @@ def contar_paginas(autor_id):
         paginas += livro.paginas
 
     return paginas
+
+@register.filter
+def quant_previa(previa):
+    return len(previa)

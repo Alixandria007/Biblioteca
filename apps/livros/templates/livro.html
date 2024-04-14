@@ -26,8 +26,13 @@
         <p>{% for genero in livro.genero.all %}
             <a href="{% url "livros:genero" genero.id %}">{{genero}}</a>
             {% endfor %}</p>
+        
+        <form action="{% url "livros:adicionar_emprestimo" %}" method="get">
+            <input type="hidden" name="livro_id" id="livro_id" value="{{livro.id}}">
 
-        <a href="" class="btn btn-primary mt-4">Adicionar ao emprestimo</a>
+            <button type="submit" class="btn btn-primary mt-4">Adicionar ao emprestimo</button>
+        </form>
+        
     </div>
 
     <div class="mt-4">
