@@ -137,7 +137,6 @@ def adicionar_emprestimo(request):
         }
 
         request.session.save()
-        livro.estoque -= 1
         livro.save()
         
 
@@ -156,3 +155,23 @@ def previa_emprestimo(request):
     }
 
     return render(request, 'previa_emprestimo.html', context)
+
+def remover_livro(request, id):
+    previa = request.session['previa_emprestimo']
+
+    if previa.get(str(id)):
+        del previa[str(id)]
+        request.session.save()
+
+        messages.success(
+            request,
+            "Livro apagado com sucesso"
+        )
+    else:
+        messages.error(
+            request,
+            "Este livro não está adicionado a previa"
+        )
+
+    return redirect(request.META.get('HTTP_REFERER'))
+    
