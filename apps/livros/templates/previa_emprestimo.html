@@ -1,5 +1,18 @@
 {% extends "base.html" %}
+{% load ajfilters %}
+
 
 {% block content %}
     {% include "partials/_previa.html" %}
+    
+    <div class="row mt-4">
+        <div class="col-6">
+            <div class="row">
+                <p class="col bold">Quantidade no Carrinho:</p>
+                <p class="col">{{request.session.previa_emprestimo|quant_previa}}x livros</p>
+            </div>
+        </div>
+
+        <div class="col-6"><a class="btn btn-primary" href="" style="width: 100%;">Finalizar Emprestimo</a></div>
+    </div>
 {% endblock content %}

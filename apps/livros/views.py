@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
+from django.db.models import Q
 from django.core.paginator import Paginator
 from django.contrib import messages
 from .  import models
@@ -174,4 +175,21 @@ def remover_livro(request, id):
         )
 
     return redirect(request.META.get('HTTP_REFERER'))
-    
+
+def search(request):
+    search = request.GET.get('search', None)
+
+    if search == '':
+        return redirect('livros:index')
+
+    livros = models.Livros.objects.filter(Q(nome__icontains = search)|Q(sinopse_curta__icontains = search))
+
+    paginator = Paginator(livros, 20)
+    page_number = request.GET.get('page', None)
+    page_obj = paginator.get_page(page_number)
+
+    context = {
+        'page_obj': page_obj
+    }
+
+    return render(request, 'index.html', context)
