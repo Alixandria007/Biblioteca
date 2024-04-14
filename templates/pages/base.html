@@ -1,10 +1,17 @@
 {% include "partials/_head.html" %}
 <body>
     {% include "partials/_navbar.html" %}
-    <div class="spacing"></div>
-    oláaaa
+
+   
+
+    <div class="main-content"> 
+        
+        <h1 style="text-align: center;">{% block title %}{% endblock title %}</h1>
+        {% block content %}{% endblock content %}
+    </div>
 
     {% include "partials/_footer.html" %}
+    
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
 </html>

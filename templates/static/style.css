@@ -10,6 +10,11 @@
     padding-top: 4.2rem;
 }
 
+.main-content{
+    max-width: 1200px;
+    margin: 20px auto;
+}
+
 /*Classes*/
 
 .navbar{

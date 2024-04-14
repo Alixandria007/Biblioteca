@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block title %}Catalogo de Livros{% endblock title %}
+
+{% block content %}
+
+<div class="row">
+    {% for obj in page_obj %}
+    <div class="col-3 mt-4 mb-3">
+        {% include "partials/_cards.html" %}
+    </div>
+    {% endfor %}
+</div>
+
+{% endblock content %}

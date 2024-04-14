@@ -1,4 +1,6 @@
+from typing import Iterable
 from django.db import models
+from utils import resize_imgs
 
 # Create your models here.
 
@@ -36,7 +38,8 @@ class Livros(models.Model):
 
     nome = models.CharField(max_length=120, blank = False , null = False)
     slug = models.SlugField(null = False, blank= False)
-    sinopse = models.TextField(max_length=1200, blank = False, null = False)
+    sinopse_curta = models.TextField(max_length=1200, blank = True, null=True)
+    sinopse_longa = models.TextField(max_length=12000, blank = True, null=True)
     estoque =  models.PositiveIntegerField(default = 1, blank = False)
     paginas = models.PositiveIntegerField(default = 1, blank = False)
     imagem = models.ImageField(upload_to='assets/imgs/%Y/%m/', null = True,)
@@ -45,3 +48,17 @@ class Livros(models.Model):
 
     def __str__(self):
         return f'{self.nome}'
+    
+    def save(self, *args, **kwargs ):
+        img_name = str(self.imagem.name)
+        super_save = super().save(*args, **kwargs)
+        img_changed = False
+
+        if self.imagem:
+            img_changed = img_name != self.imagem.name
+
+        if img_changed:
+            self.imagem = resize_imgs.resize_imgs(self.imagem, 500 , True , 80)
+
+        return super_save
+        
