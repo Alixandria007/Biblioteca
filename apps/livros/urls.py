@@ -6,4 +6,5 @@ app_name = "livros"
 urlpatterns = [
     path('', views.index, name='index'),
     path('livro/<slug:slug>', views.livro, name='livro'),
+    path('autor/<int:id>', views.autor, name='autor'),
 ]

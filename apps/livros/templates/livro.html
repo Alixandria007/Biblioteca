@@ -20,7 +20,7 @@
         <p>{{livro.estoque}} livros em estoque</p>
 
         <span class="bold">Autor:</span>
-        <p>{{livro.autor}}</p>
+        <p><a href="{% url "livros:autor" livro.autor.id %}">{{livro.autor}}</a></p>
 
         <span class="bold">Generos:</span>
         <p>{{livro.genero}}</p>

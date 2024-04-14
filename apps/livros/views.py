@@ -12,7 +12,8 @@ def index(request):
     page_obj = paginator.get_page(page_number)
 
     context = {
-        'page_obj': page_obj
+        'page_obj': page_obj,
+        'title' : 'Catalogo de Livros'
     }
 
     return render(request, 'index.html', context)
@@ -25,3 +26,19 @@ def livro(request, slug):
     }
 
     return render(request, 'livro.html', context)
+
+def autor(request,id):
+    autor_ = models.Livros.objects.filter(autor__id = id).order_by('-id')
+
+    paginator = Paginator(autor_, 20)
+    page_number = request.GET.get('page', None)
+    page_obj = paginator.get_page(page_number)
+
+    autor_name = models.Autor.objects.filter(id = id).first()
+
+    context = {
+        'page_obj': page_obj,
+        'title' : autor_name.nome
+    }
+
+    return render(request, 'index.html', context)
