@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% load ajfilters %}
+
+{% block title %}Leitores{% endblock title %}
+
+{% block content %}
+
+<div class="row mt-4">
+    <div class="col">
+
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <tr>
+                    <th scope="col">Nome Completo</th>
+                    <th scope="col">Nascimento</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Telefone</th>
+                    <th scope="col">Cpf</th>
+                    <th scope="col">Mais detalhes</th>
+                </tr>
+
+
+                {% for leitor in leitores %}
+                <tr>
+                    <td scope="row"><a href="">{{ leitor.leitor.first_name}} {{leitor.leitor.last_name}}</a></td>
+                    <td>{{leitor.data_nascimento}}</td>
+                    <td>{{leitor.leitor.email}}</td>
+                    <td>{{leitor.telefone}}</td>
+                    <td>{{leitor.cpf|formt_cpf}}</td>
+                    <td>
+                        <a href="">
+                            Ver <i class="fas fa-search-plus ml-2"></i>
+                        </a>
+                    </td>
+                </tr>
+                {% endfor %}
+
+
+            </table>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

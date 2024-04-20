@@ -21,3 +21,20 @@ def contar_paginas(autor_id):
 @register.filter
 def quant_previa(previa):
     return len(previa)
+
+@register.filter
+def formt_cpf(cpf):
+    cont = 0
+    novo_cpf = ""
+
+    for i in cpf:
+        if cont % 3 == 0 and not cont == 0 and not cont == 9:
+            novo_cpf += '.'
+
+        if cont == 9:
+            novo_cpf += '-'
+
+        novo_cpf += i
+        cont += 1
+
+    return novo_cpf

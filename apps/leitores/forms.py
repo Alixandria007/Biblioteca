@@ -40,21 +40,12 @@ class UserForm(ModelForm):
     class Meta:
 
         model = User
-        fields = "first_name", "last_name", "username", "email"
+        fields = "first_name", "last_name", "email"
 
     def clean(self, *args, **kwargs):
         cleaned_data = self.cleaned_data
 
-        usuario_data = cleaned_data['username']
         email_data = cleaned_data['email']
-
-        usuario_db = User.objects.filter(username = usuario_data)
-
-        if usuario_db:
-                self.add_error(
-                    'username',
-                    ValidationError('Este usuario já existe.')
-                )
 
         if User.objects.filter(email = email_data).exists():
             self.add_error(
