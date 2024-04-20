@@ -6,4 +6,5 @@ app_name = "leitores"
 urlpatterns = [
     path('adicionar/', views.adicionar, name='adicionar'),
     path('consultar/', views.consultar, name='consultar'),
+    path('search/', views.search, name='search'),
 ]

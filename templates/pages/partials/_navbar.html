@@ -49,10 +49,17 @@
                 {% endif %}
             </ul>
             
-            <form class="d-flex col" action="{% url "livros:search" %}">
+            {% if search_leitor %}
+            <form class="d-flex col" action="{% url "leitores:search" %}">
                 <input class="form-control me-2" type="search" placeholder="Pesquisar" id="search" name="search" aria-label="Search">
                 <button class="btn btn-light" type="submit">Search</button>
             </form>
+            {% else %}
+                <form class="d-flex col" action="{% url "livros:search" %}">
+                    <input class="form-control me-2" type="search" placeholder="Pesquisar" id="search" name="search" aria-label="Search">
+                    <button class="btn btn-light" type="submit">Search</button>
+                </form>
+            {% endif %}
         </div>
     </div>
 </nav>

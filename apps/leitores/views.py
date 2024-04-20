@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.core.paginator import Paginator
 from django.contrib import messages
 from django.contrib.auth.models import User
+from django.db.models import Q
 from . import forms, models
 
 # Create your views here.
@@ -67,8 +68,29 @@ def consultar(request):
     page_obj = paginator.get_page(page_number)
 
     context = {
-        'leitores' : page_obj
+        'leitores' : page_obj,
+        'search_leitor' : True,
     }
     
+
+    return render(request, 'consultar_usuario.html', context)
+
+def search(request):
+    search = request.GET.get('search', None)
+
+    if search == '':
+        return redirect('leitores:consultar')
+
+    
+    leitores = models.Leitor.objects.filter(Q(leitor__first_name__icontains = search)|Q(leitor__last_name__icontains = search)| Q(cpf__icontains = search))
+
+    paginator = Paginator(leitores, 20)
+    page_number = request.GET.get('page', None)
+    page_obj = paginator.get_page(page_number)
+
+    context = {
+        'leitores': page_obj,
+        'search_leitor' : True,
+    }
 
     return render(request, 'consultar_usuario.html', context)

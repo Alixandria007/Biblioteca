@@ -182,21 +182,12 @@ def search(request):
 
     if search == '':
         return redirect('livros:index')
+    
+    livros = models.Livros.objects.filter(Q(nome__icontains = search)|Q(sinopse_curta__icontains = search))
 
-    if request.META['HTTP_REFERER'] == 'http://127.0.0.1:8000/leitor/consultar/':
-
-        livros = models.Leitor.objects.filter(Q()|Q())
-
-        paginator = Paginator(livros, 20)
-        page_number = request.GET.get('page', None)
-        page_obj = paginator.get_page(page_number)
-
-    else:
-        livros = models.Livros.objects.filter(Q(nome__icontains = search)|Q(sinopse_curta__icontains = search))
-
-        paginator = Paginator(livros, 20)
-        page_number = request.GET.get('page', None)
-        page_obj = paginator.get_page(page_number)
+    paginator = Paginator(livros, 20)
+    page_number = request.GET.get('page', None)
+    page_obj = paginator.get_page(page_number)
 
     context = {
         'page_obj': page_obj
