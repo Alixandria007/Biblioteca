@@ -1,6 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
-
+from apps.leitores.models import Leitor
 from apps.livros.models import Autor,Genero
 
 # Create your models here.
@@ -10,9 +10,9 @@ class Emprestimo(models.Model):
         verbose_name = 'Emprestimo'
         verbose_name_plural = "Emprestimos"
 
-    leitor = models.ForeignKey(User, on_delete=models.CASCADE)
-    data_inicial = models.DateTimeField(null = False, blank = False)
-    data_final = models.DateTimeField(null = False, blank = False)
+    leitor = models.ForeignKey(Leitor, on_delete=models.CASCADE)
+    data_inicial = models.DateField(null = False, blank = False)
+    data_final = models.DateField(null = False, blank = False)
     quant_livros = models.PositiveIntegerField(default = 1)
     status = models.CharField(
         null = False,
@@ -39,7 +39,6 @@ class LivroEmprestimo(models.Model):
     quantidade =  models.PositiveIntegerField(default = 1, blank = False)
     paginas = models.PositiveIntegerField(default = 1, blank = False)
     autor = models.ForeignKey(Autor, on_delete = models.CASCADE)
-    genero = models.ForeignKey(Genero, on_delete = models.SET_NULL , null = True)
 
     def __str__(self) -> str:
         return f"Livro Emprestado no pedido nº{self.emprestimo}"

@@ -160,6 +160,14 @@ def previa_emprestimo(request):
 
 def realizar_emprestimo(request):
     import datetime
+
+    if not request.session.get('previa_emprestimo'):
+        messages.error(
+            request,
+            "Não há livros na previa."
+        )
+
+        return redirect('livros:index')
     previa = request.session['previa_emprestimo']
 
     if request.session['leitor']:
@@ -170,7 +178,8 @@ def realizar_emprestimo(request):
         context = {
             'leitor' : leitor,
             'previa' : previa,
-            'hoje' : datetime.date.today().isoformat()
+            'hoje' : datetime.date.today().isoformat(),
+            'mes' : (datetime.date.today() + datetime.timedelta(days = 30)).isoformat
         }
 
     else:

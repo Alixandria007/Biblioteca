@@ -75,7 +75,7 @@
                 <div class="data-item col-6">
                     
                     <dt>Data Final do Emprestimo:</dt>
-                    <dd><input type="date" name="data_final" id="data_final"></dd>
+                    <dd><input type="date" name="data_final" id="data_final" value={{mes}} disabled></dd>
         
                 </div>
         {% endif %}
@@ -93,6 +93,9 @@
             </div>
         </div>
 
-        <div class="col-6"><a class="btn btn-primary" href="" style="width: 100%;">Realizar Emprestimo</a></div>
+        <form class="col-6" action="{% url "emprestimos:criar_emprestimo" %}">
+            <input type="hidden" name="data-final" id='data-final' value="{{mes}}">
+            <button class="btn btn-primary" style="width: 100%;">Realizar Emprestimo</button>
+        </form>
     </div>
 {% endblock content %}

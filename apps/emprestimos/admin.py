@@ -12,6 +12,6 @@ class EmprestimoAdmin(admin.ModelAdmin):
 
 @admin.register(models.LivroEmprestimo)
 class LivroEmprestimoAdmin(admin.ModelAdmin):
-    list_display = 'id', 'nome', 'quantidade', 'paginas', 'autor', 'genero'
+    list_display = 'id', 'nome', 'quantidade', 'paginas', 'autor'
     list_display_links = 'id',
     ordering = '-id',
