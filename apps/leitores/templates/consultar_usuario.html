@@ -28,8 +28,8 @@
                     <td>{{leitor.telefone}}</td>
                     <td>{{leitor.cpf|formt_cpf}}</td>
                     <td>
-                        <a href="{% url "leitores:usuario" leitor.id %}">
-                            Ver <i class="fas fa-search-plus ml-2"></i>
+                        <a class="btn btn-primary btn-sm" href="{% url "leitores:adicionar_emprestimo" leitor.id %}">
+                            Adicionar ao Emprestimo</i>
                         </a>
                     </td>
                 </tr>

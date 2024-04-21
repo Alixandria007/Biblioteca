@@ -159,6 +159,16 @@ a{
     border-radius: 10px;
 }
 
+.data-wrapper-100{
+    background: white;
+    max-width: 100%;
+    margin: 0px auto;
+    margin-top: 25px;
+    padding: 10px;
+    box-shadow: 2px 2px 5px 2px rgba(0, 0, 0, 0.247);
+    border-radius: 10px;
+}
+
 .data-item{
     display: flex;
     flex-direction: row;

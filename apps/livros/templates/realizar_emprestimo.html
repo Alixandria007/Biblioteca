@@ -3,8 +3,8 @@
 
 
 {% block content %}
-    <div class="row mb-4">
-        {% if not request.session.previa_emprestimo.leitor %}
+    <div class="data-wrapper-100 row mb-4">
+        {% if not request.session.leitor %}
         <div class="data-item col-4">
             
             <dt>Leitor:</dt>
@@ -71,8 +71,16 @@
                     <dt class="bold">Cpf:</dt>
                     <dd>{{ leitor.cpf|formt_cpf }}</dd>
                 </div>
+        
+                <div class="data-item col-6">
+                    
+                    <dt>Data Final do Emprestimo:</dt>
+                    <dd><input type="date" name="data_final" id="data_final"></dd>
+        
+                </div>
         {% endif %}
 
+    </div>
     </div>
 
     {% include "partials/_previa.html" %}
@@ -85,6 +93,6 @@
             </div>
         </div>
 
-        <div class="col-6"><a class="btn btn-primary" href="" style="width: 100%;">Finalizar Emprestimo</a></div>
+        <div class="col-6"><a class="btn btn-primary" href="" style="width: 100%;">Realizar Emprestimo</a></div>
     </div>
 {% endblock content %}

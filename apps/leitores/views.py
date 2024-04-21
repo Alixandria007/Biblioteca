@@ -105,3 +105,12 @@ def usuario(request, id):
     }
 
     return render(request, 'usuario.html', context)
+
+def adicionar_emprestimo(request, id):
+    leitor = models.Leitor.objects.filter(id = id).first()
+
+    previa = request.session
+    previa['leitor'] = leitor.leitor.username
+    request.session.save()
+
+    return redirect(request.META['HTTP_REFERER'])

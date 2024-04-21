@@ -162,9 +162,9 @@ def realizar_emprestimo(request):
     import datetime
     previa = request.session['previa_emprestimo']
 
-    if previa.get('leitor'):
+    if request.session['leitor']:
 
-        leitor = Leitor.objects.filter(leitor__username = previa['leitor']).first()
+        leitor = Leitor.objects.filter(leitor__username = request.session['leitor']).first()
 
 
         context = {
