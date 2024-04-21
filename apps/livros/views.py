@@ -158,6 +158,30 @@ def previa_emprestimo(request):
 
     return render(request, 'previa_emprestimo.html', context)
 
+def realizar_emprestimo(request):
+    import datetime
+    previa = request.session['previa_emprestimo']
+
+    if previa.get('leitor'):
+
+        leitor = Leitor.objects.filter(leitor__username = previa['leitor']).first()
+
+
+        context = {
+            'leitor' : leitor,
+            'previa' : previa,
+            'hoje' : datetime.date.today().isoformat()
+        }
+
+    else:
+        context = {
+            'previa' : previa,
+            'hoje' : datetime.date.today().isoformat()
+        }
+
+
+    return render(request, 'realizar_emprestimo.html', context)
+
 def remover_livro(request, id):
     previa = request.session['previa_emprestimo']
 

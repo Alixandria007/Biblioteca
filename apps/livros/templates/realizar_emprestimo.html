@@ -1,0 +1,90 @@
+{% extends "base.html" %}
+{% load ajfilters %}
+
+
+{% block content %}
+    <div class="row mb-4">
+        {% if not request.session.previa_emprestimo.leitor %}
+        <div class="data-item col-4">
+            
+            <dt>Leitor:</dt>
+            
+
+            <dd>{{request.session.previa_emprestimo.leitor}}</dd>
+
+            <dd><a href="{% url "leitores:consultar" %}" class="btn btn-primary btn-sm">Adicionar Leitor</a></dd>
+            
+            
+        </div>
+
+        <div class="data-item col-4">
+            
+            <dt>Data Inicial:</dt>
+            <dd><input type="date" value="{{hoje}}"></dd>
+
+        </div>
+
+        <div class="data-item col-4">
+            
+            <dt>Data Final:</dt>
+            <dd><input type="date"></dd>
+
+        </div>
+
+        {% else %}
+
+            <h3>Dados Pessoais</h3>
+        
+            <div class="row">
+            
+                <div class="data-item col-6">
+                    <dt class="bold">Nome:</dt>
+                    <dd>{{leitor.leitor.first_name}}</dd>
+                </div>
+
+                <div class="data-item col-6">
+                    <dt class="bold" >Sobrenome:</dt>
+                    <dd>{{ leitor.leitor.last_name }}</dd>
+                </div>
+
+                <div class="data-item col-6">
+                    <dt class="bold">Idade:</dt>
+                    <dd>{{ leitor.idade }}</dd>
+                </div>
+
+                <div class="data-item col-6">
+                    <dt class="bold">Nascimento:</dt>
+                    <dd>{{ leitor.data_nascimento }}</dd>
+                </div>
+
+                <div class="data-item col-6">
+                    <dt class="bold">E-mail:</dt>
+                    <dd>{{ leitor.leitor.email }}</dd>
+                </div>
+
+                <div class="data-item col-6">
+                    <dt class="bold">Telefone:</dt>
+                    <dd>{{ leitor.telefone }}</dd>
+                </div>
+
+                <div class="data-item col-6">
+                    <dt class="bold">Cpf:</dt>
+                    <dd>{{ leitor.cpf|formt_cpf }}</dd>
+                </div>
+        {% endif %}
+
+    </div>
+
+    {% include "partials/_previa.html" %}
+    
+    <div class="row mt-4">
+        <div class="col-6">
+            <div class="row">
+                <p class="col bold">Quantidade no Carrinho:</p>
+                <p class="col">{{request.session.previa_emprestimo|quant_previa}}x livros</p>
+            </div>
+        </div>
+
+        <div class="col-6"><a class="btn btn-primary" href="" style="width: 100%;">Finalizar Emprestimo</a></div>
+    </div>
+{% endblock content %}
