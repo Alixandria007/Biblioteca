@@ -94,3 +94,14 @@ def search(request):
     }
 
     return render(request, 'consultar_usuario.html', context)
+
+def usuario(request, id):
+
+    leitor = models.Leitor.objects.filter(id = id).first()
+
+    context = {
+        'leitor': leitor,
+        'search_leitor' : True,
+    }
+
+    return render(request, 'usuario.html', context)
