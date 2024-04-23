@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% load ajfilters %}
+
+{% block title %}Emprestimos{% endblock title %}
+
+{% block content %}
+
+<div class="row mt-4">
+    <div class="col">
+
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <tr>
+                    <th scope="col">Nº</th>
+                    <th scope="col">Leitor</th>
+                    <th scope="col">Data Incial</th>
+                    <th scope="col">Data Final</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Encerrar</th>
+                </tr>
+
+
+                {% for emprestimo in emprestimos %}
+                <tr>
+                    <td scope="row"><a href="">Emprestimo Nº{{ emprestimo.id}}</a></td>
+                    <td>{{emprestimo.leitor}}</td>
+                    <td>{{emprestimo.data_inicial}}</td>
+                    <td>{{emprestimo.data_final}}</td>
+                    <td>{{emprestimo.get_status_display}}</td>
+                    <td>
+                        <a class="btn btn-primary btn-sm" href="">
+                            Encerrar Emprestimo</i>
+                        </a>
+                    </td>
+                </tr>
+                {% endfor %}
+
+
+            </table>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

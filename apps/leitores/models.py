@@ -15,4 +15,4 @@ class Leitor(models.Model):
     cpf = models.CharField(max_length = 11 ,unique = True, blank=False)
 
     def __str__(self):
-        return f"Leitor {self.leitor.username}"
+        return f"{self.leitor.username}"

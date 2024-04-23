@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 import datetime
 from apps.leitores.models import Leitor
 from apps.livros.models import Genero,Autor,Livros
+from django.core.paginator import Paginator
 from django.contrib import messages
 from . import models
 # Create your views here.
@@ -69,3 +70,19 @@ def criar_emprestimo(request):
     del request.session['previa_emprestimo']
     
     return redirect('livros:index')
+
+
+def consultar_emprestimos(request):
+    emprestimos = models.Emprestimo.objects.all()
+
+    paginator = Paginator(emprestimos, 10)
+    page_number = request.GET.get('page', None)
+    page_obj = paginator.get_page(page_number)
+
+    context = {
+        'emprestimos' : page_obj,
+        'search_emprestimo' : True,
+    }
+    
+
+    return render(request, 'consultar_emprestimo.html', context)
