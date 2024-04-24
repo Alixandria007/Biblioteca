@@ -1,10 +1,9 @@
 {% extends 'base.html' %}
 {% load ajfilters %}
 
-{% block title %}Autores{% endblock title %}
+{% block title %}Generos{% endblock title %}
 
 {% block content %}
-
 <div class="data-wrapper-100">
     <div class="row mt-4">
         <div class="col">
@@ -19,13 +18,13 @@
                     </tr>
 
 
-                    {% for autor in autores %}
+                    {% for genero in generos %}
                     <tr>
-                        <td scope="row"><a href="{% url "livros:autor" autor.id %}">{{ autor.nome }}</a></td>
-                        <td>{{autor.id|contar_livros}}</td>
-                        <td>{{autor.id|contar_paginas}}</td>
+                        <td scope="row"><a href="{% url "livros:genero" genero.id %}">{{ genero.nome }}</a></td>
+                        <td>{{genero.id|contar_livros_genero}}</td>
+                        <td>{{genero.id|contar_paginas_genero}}</td>
                         <td>
-                            <a href="{% url "livros:autor" autor.id %}">
+                            <a href="{% url "livros:genero" genero.id %}">
                                 Ver <i class="fas fa-search-plus ml-2"></i>
                             </a>
                         </td>

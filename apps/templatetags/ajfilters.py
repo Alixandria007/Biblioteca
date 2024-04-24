@@ -19,6 +19,21 @@ def contar_paginas(autor_id):
     return paginas
 
 @register.filter
+def contar_livros_genero(genero_id):
+    livros = models.Livros.objects.filter(genero__id = genero_id).count()
+    return livros
+
+@register.filter
+def contar_paginas_genero(genero_id):
+    livros = models.Livros.objects.filter(genero__id = genero_id)
+    paginas = 0
+
+    for livro in livros:
+        paginas += livro.paginas
+
+    return paginas
+
+@register.filter
 def quant_previa(previa):
     return len(previa)
 

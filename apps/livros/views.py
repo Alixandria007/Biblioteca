@@ -72,6 +72,16 @@ def ver_autores(request):
 
     return render(request, 'ver_autores.html', context)
 
+def ver_generos(request):
+    generos = models.Genero.objects.all()
+
+    context = {
+        'generos' : generos 
+    }
+    
+
+    return render(request, 'ver_generos.html', context)
+
 
 def adicionar_emprestimo(request):
     livro_id = request.GET.get('livro_id', None)
