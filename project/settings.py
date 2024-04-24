@@ -79,7 +79,7 @@ WSGI_APPLICATION = 'project.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgreesql_psycopg_any',
+        'ENGINE': 'django.db.backends.postgreesql',
         'NAME': 'biblioteca_db_jqjs',
         'USER': 'admin',
         'PASSWORD' : '78qGbFxg8ngaTxlZ9R2gO9Fk2VBkOVbQ',
