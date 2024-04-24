@@ -123,3 +123,26 @@ def encerrar_emprestimo(request,id):
     )
 
     return redirect(request.META["HTTP_REFERER"])
+
+def ver_atrasos(request):
+    emprestimos_ = models.Emprestimo.objects.all()
+
+    for emprestimo in emprestimos_:
+
+        if emprestimo.status == "C" and datetime.date.today() > emprestimo.data_final:
+            emprestimo.status = "A"
+            emprestimo.save()
+
+    emprestimos_atrasados = models.Emprestimo.objects.filter(status = "A" ).all()
+
+    paginator = Paginator(emprestimos_atrasados, 10)
+    page_number = request.GET.get('page', None)
+    page_obj = paginator.get_page(page_number)
+
+    context = {
+        'emprestimos' : page_obj,
+        'search_emprestimo' : True,
+        'atraso' : "Atrasados"
+    }
+
+    return render(request, 'consultar_emprestimo.html', context)
