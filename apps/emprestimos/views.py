@@ -59,6 +59,7 @@ def criar_emprestimo(request):
             quantidade = 1,
             paginas = l['paginas'],
             autor = Autor.objects.filter(nome = l['autor']).first(),
+            imagem = l['imagem']
         ) for l in previa.values()
     )
 
@@ -86,3 +87,16 @@ def consultar_emprestimos(request):
     
 
     return render(request, 'consultar_emprestimo.html', context)
+
+def emprestimo(request, id):
+    emprestimo_ = models.Emprestimo.objects.filter(id = id).first()
+
+    livro_emprestimo = models.LivroEmprestimo.objects.filter(emprestimo__id = id).all()
+
+    context = {
+        'emprestimo': emprestimo_,
+        'livros': livro_emprestimo,
+        'search_leitor' : True,
+    }
+
+    return render(request, 'emprestimo.html', context)

@@ -1,0 +1,90 @@
+{% extends "base.html" %}
+
+{% load ajfilters %}
+
+{% block title %}Emprestimo Nº{{emprestimo.id}}{% endblock title %}
+
+{% block content %}
+
+<div class="data-wrapper-100">
+    <h3>Dados do Emprestimo</h3>
+    
+    <div class="row">
+    
+        <div class="data-item col-6">
+            <dt class="bold">Nome Completo:</dt>
+            <dd>{{emprestimo.leitor.leitor.first_name}} {{emprestimo.leitor.leitor.last_name}}</dd>
+        </div>
+
+        <div class="data-item col-6">
+            <dt class="bold">Idade:</dt>
+            <dd>{{ emprestimo.leitor.idade }}</dd>
+        </div>
+
+        <div class="data-item col-6">
+            <dt class="bold">Nascimento:</dt>
+            <dd>{{ emprestimo.leitor.data_nascimento }}</dd>
+        </div>
+
+        <div class="data-item col-6">
+            <dt class="bold">E-mail:</dt>
+            <dd>{{ emprestimo.leitor.leitor.email }}</dd>
+        </div>
+
+        <div class="data-item col-6">
+            <dt class="bold">Telefone:</dt>
+            <dd>{{ emprestimo.leitor.telefone }}</dd>
+        </div>
+
+        <div class="data-item col-6">
+            <dt class="bold">Cpf:</dt>
+            <dd>{{ emprestimo.leitor.cpf|formt_cpf }}</dd>
+        </div>
+        
+        <div class="data-item col-6">
+            <dt class="bold">Data de Inicio:</dt>
+            <dd>{{ emprestimo.data_inicial}}</dd>
+        </div>
+
+        <div class="data-item col-6">
+            <dt class="bold">Data de Final:</dt>
+            <dd>{{ emprestimo.data_final}}</dd>
+        </div>
+
+        <div class="data-item col-6">
+            <dt class="bold">Status:</dt>
+            <dd>{{ emprestimo.get_status_display}}</dd>
+        </div>
+
+    </div>
+</div>
+
+<div class="books mt-4">
+    <table class="table-preview">
+        <thead class="header-preview">
+            <th>Imagem</th>
+            <th>Livro</th>
+            <th>Autor</th>
+            <th>Paginas</th>
+        </thead>
+
+        <tbody class="body-preview">
+            {% for livro in livros %}
+                <tr>
+                    <td width="20%"><img class="img-thumb pt-2" src="/media/{{livro.imagem}}" alt=""></td>
+
+                    <td width="30%"><a class="link-blue" href="{% url "livros:livro" livro.slug %}">{{livro.nome}}</a></td>
+
+                    <td width="30%">{{livro.autor}}</td>
+                    
+                    <td width="10%">{{livro.paginas}}</td>
+                </tr>
+
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <div class="col-12 mt-3"><a class="btn btn-primary" href="{% url "livros:realizar_emprestimo" %}" style="width: 100%;">Encerrar Emprestimo</a></div>
+</div>
+
+{% endblock content %}

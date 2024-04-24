@@ -9,10 +9,8 @@
                         Livros
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">Adicionar Livro</a></li>
-                        <li><a class="dropdown-item" href="#">Adicionar Autor</a></li>
-                        <li><hr class="dropdown-divider"></li>
                         <li><a class="dropdown-item" href="{% url "livros:ver_autores" %}">Ver Autores</a></li>
+                        <li><a class="dropdown-item" href="{% url "livros:ver_autores" %}">Ver Generos</a></li>
                     </ul>
                 </li>
 
@@ -21,9 +19,7 @@
                         Emprestimos
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">Criar emprestimos</a></li>
                         <li><a class="dropdown-item" href="{% url "emprestimos:consultar_emprestimos" %}">Consultar emprestimos</a></li>
-                        <li><hr class="dropdown-divider"></li>
                         <li><a class="dropdown-item" href="#">Ver emprestimos atrasados</a></li>
                     </ul>
                 </li>

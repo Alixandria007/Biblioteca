@@ -39,6 +39,7 @@ class LivroEmprestimo(models.Model):
     quantidade =  models.PositiveIntegerField(default = 1, blank = False)
     paginas = models.PositiveIntegerField(default = 1, blank = False)
     autor = models.ForeignKey(Autor, on_delete = models.CASCADE)
+    imagem = models.CharField( max_length = 1200, null=True, default=None)
 
     def __str__(self) -> str:
         return f"Livro Emprestado no pedido nº{self.emprestimo}"
