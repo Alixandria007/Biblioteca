@@ -84,7 +84,7 @@
         </tbody>
     </table>
 
-    <div class="col-12 mt-3"><a class="btn btn-primary" href="{% url "livros:realizar_emprestimo" %}" style="width: 100%;">Encerrar Emprestimo</a></div>
+    <div class="col-12 mt-3"><a class="btn btn-primary" href="{% url "emprestimos:encerrar_emprestimo" emprestimo.id %}" style="width: 100%;">Encerrar Emprestimo</a></div>
 </div>
 
 {% endblock content %}

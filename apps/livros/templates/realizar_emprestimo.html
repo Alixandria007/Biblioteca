@@ -19,15 +19,15 @@
 
         <div class="data-item col-4">
             
-            <dt>Data Inicial:</dt>
-            <dd><input type="date" value="{{hoje}}"></dd>
+            <dt>Data Inicial do Emprestimo:</dt>
+            <dd><input type="date" value="{{hoje}}" disabled></dd>
 
         </div>
 
         <div class="data-item col-4">
             
-            <dt>Data Final:</dt>
-            <dd><input type="date"></dd>
+            <dt>Data Final do Emprestimo:</dt>
+            <dd><input type="date" name="data_final" id="data_final" value={{mes}} disabled></dd>
 
         </div>
 
@@ -78,9 +78,10 @@
                     <dd><input type="date" name="data_final" id="data_final" value={{mes}} disabled></dd>
         
                 </div>
+            </div>
         {% endif %}
 
-    </div>
+
     </div>
 
     {% include "partials/_previa.html" %}

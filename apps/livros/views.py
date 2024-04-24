@@ -180,7 +180,7 @@ def realizar_emprestimo(request):
         return redirect('livros:index')
     previa = request.session['previa_emprestimo']
 
-    if request.session['leitor']:
+    if request.session.get('leitor'):
 
         leitor = Leitor.objects.filter(leitor__username = request.session['leitor']).first()
 
@@ -195,7 +195,8 @@ def realizar_emprestimo(request):
     else:
         context = {
             'previa' : previa,
-            'hoje' : datetime.date.today().isoformat()
+            'hoje' : datetime.date.today().isoformat(),
+            'mes' : (datetime.date.today() + datetime.timedelta(days = 30)).isoformat
         }
 
 

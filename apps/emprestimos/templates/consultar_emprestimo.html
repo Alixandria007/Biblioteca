@@ -29,7 +29,7 @@
                         <td>{{emprestimo.data_final}}</td>
                         <td>{{emprestimo.get_status_display}}</td>
                         <td>
-                            <a class="btn btn-primary btn-sm" href="">
+                            <a class="btn btn-primary btn-sm" href="{% url "emprestimos:encerrar_emprestimo" emprestimo.id %}">
                                 Encerrar Emprestimo</i>
                             </a>
                         </td>

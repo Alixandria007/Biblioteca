@@ -29,13 +29,6 @@ def criar_emprestimo(request):
 
     leitor = Leitor.objects.filter(leitor__username = request.session['leitor']).first()
     previa = request.session['previa_emprestimo']
-
-    genero_ids = {}
-    for k in previa.keys():
-        genero_ids[k] = ({k: [genero_id['id'] for genero_id in previa[k]['genero']]})
-    
-    print(genero_ids.values())
-        
     data_final = request.GET.get('data-final')
 
     emprestimo = models.Emprestimo(
@@ -69,12 +62,19 @@ def criar_emprestimo(request):
     )
 
     del request.session['previa_emprestimo']
+    del request.session['leitor']
     
     return redirect('livros:index')
 
 
 def consultar_emprestimos(request):
     emprestimos = models.Emprestimo.objects.all()
+
+    for emprestimo in emprestimos:
+
+        if emprestimo.status == "C" and datetime.date.today() > emprestimo.data_final:
+            emprestimo.status = "A"
+            emprestimo.save()
 
     paginator = Paginator(emprestimos, 10)
     page_number = request.GET.get('page', None)
@@ -100,3 +100,26 @@ def emprestimo(request, id):
     }
 
     return render(request, 'emprestimo.html', context)
+
+
+def encerrar_emprestimo(request,id):
+
+    emprestimo = models.Emprestimo.objects.filter(id = id).first()
+
+    if emprestimo.status == "D":
+        messages.warning(
+            request,
+            "Este Emprestimo já foi encerrado."
+        )
+
+        return redirect(request.META["HTTP_REFERER"])
+
+    emprestimo.status = 'D'
+    emprestimo.save()
+
+    messages.success(
+        request,
+        f"Emprestimo Nº{emprestimo.id} encerrado."
+    )
+
+    return redirect(request.META["HTTP_REFERER"])
