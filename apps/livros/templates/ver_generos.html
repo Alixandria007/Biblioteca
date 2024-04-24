@@ -18,7 +18,7 @@
                     </tr>
 
 
-                    {% for genero in generos %}
+                    {% for genero in page_obj %}
                     <tr>
                         <td scope="row"><a href="{% url "livros:genero" genero.id %}">{{ genero.nome }}</a></td>
                         <td>{{genero.id|contar_livros_genero}}</td>

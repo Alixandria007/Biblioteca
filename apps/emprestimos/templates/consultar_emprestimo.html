@@ -5,7 +5,7 @@
 
 {% block content %}
 
-    {% if emprestimos %}
+    {% if page_obj %}
         <div class="data-wrapper-100">
             <div class="row mt-4">
                 <div class="col">
@@ -22,7 +22,7 @@
                             </tr>
 
 
-                            {% for emprestimo in emprestimos %}
+                            {% for emprestimo in page_obj %}
                             <tr>
                                 <td scope="row"><a href="{% url "emprestimos:emprestimo" emprestimo.id %}">Emprestimo Nº{{ emprestimo.id}}</a></td>
                                 <td>{{emprestimo.leitor}}</td>

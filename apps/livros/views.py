@@ -65,8 +65,12 @@ def genero(request,id):
 def ver_autores(request):
     autores = models.Autor.objects.all()
 
+    paginator = Paginator(autores, 10)
+    page_number = request.GET.get('page', None)
+    page_obj = paginator.get_page(page_number)
+
     context = {
-        'autores' : autores 
+        'page_obj' : page_obj
     }
     
 
@@ -75,8 +79,12 @@ def ver_autores(request):
 def ver_generos(request):
     generos = models.Genero.objects.all()
 
+    paginator = Paginator(generos, 10)
+    page_number = request.GET.get('page', None)
+    page_obj = paginator.get_page(page_number)
+
     context = {
-        'generos' : generos 
+        'page_obj' : page_obj
     }
     
 

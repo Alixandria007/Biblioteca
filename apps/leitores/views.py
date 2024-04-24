@@ -69,7 +69,7 @@ def consultar(request):
     page_obj = paginator.get_page(page_number)
 
     context = {
-        'leitores' : page_obj,
+        'page_obj' : page_obj,
         'search_leitor' : True,
     }
     
@@ -90,7 +90,7 @@ def search(request):
     page_obj = paginator.get_page(page_number)
 
     context = {
-        'leitores': page_obj,
+        'page_obj': page_obj,
         'search_leitor' : True,
     }
 
@@ -125,7 +125,7 @@ def adicionar_emprestimo(request, id):
 
         del request.session['leitor']
         request.session.save()
-        
+
         return redirect('livros:realizar_emprestimo')
 
     if request.session.get("previa_emprestimo"):

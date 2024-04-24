@@ -5,6 +5,7 @@
 
 {% block content %}
 
+{% if page_obj %}
 <div class="data-wrapper-100">
     <div class="row mt-4">
         <div class="col">
@@ -21,7 +22,7 @@
                     </tr>
 
 
-                    {% for leitor in leitores %}
+                    {% for leitor in page_obj %}
                     <tr>
                         <td scope="row"><a href="{% url "leitores:usuario" leitor.id %}">{{ leitor.leitor.first_name}} {{leitor.leitor.last_name}}</a></td>
                         <td>{{leitor.data_nascimento}}</td>
@@ -43,4 +44,11 @@
     </div>
 </div>
 
+{% else %}
+
+<div class="data-wrapper-100">
+    <h3 class="center">Nenhum Leitor encontrado.</h3>
+</div>
+
+{% endif %}
 {% endblock content %}

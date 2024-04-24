@@ -19,7 +19,7 @@
                     </tr>
 
 
-                    {% for autor in autores %}
+                    {% for autor in page_obj %}
                     <tr>
                         <td scope="row"><a href="{% url "livros:autor" autor.id %}">{{ autor.nome }}</a></td>
                         <td>{{autor.id|contar_livros}}</td>

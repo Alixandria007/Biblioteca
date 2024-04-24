@@ -8,6 +8,7 @@
         
         <h1 style="text-align: center;">{% block title %}{% endblock title %}</h1>
         {% block content %}{% endblock content %}
+        {% include "partials/_pagination.html" %}
     </div>
 
     {% include "partials/_footer.html" %}

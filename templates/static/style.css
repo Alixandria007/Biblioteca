@@ -35,6 +35,10 @@ a{
     font-weight: bold;
 }
 
+.rotate{
+    transform: rotate(180deg);
+}
+
 .label{
     display: block;
     text-align: start;
@@ -173,4 +177,10 @@ a{
     display: flex;
     flex-direction: row;
     gap: 0.5rem;
+}
+
+.pagination{
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

@@ -67,7 +67,7 @@ def criar_emprestimo(request):
 
 
 def consultar_emprestimos(request):
-    emprestimos = models.Emprestimo.objects.all()
+    emprestimos = models.Emprestimo.objects.all().order_by('-pk')
 
     for emprestimo in emprestimos:
 
@@ -80,7 +80,7 @@ def consultar_emprestimos(request):
     page_obj = paginator.get_page(page_number)
 
     context = {
-        'emprestimos' : page_obj,
+        'page_obj' : page_obj,
         'search_emprestimo' : True,
     }
     

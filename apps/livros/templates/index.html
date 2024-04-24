@@ -5,11 +5,21 @@
 {% block content %}
 
 <div class="row">
-    {% for obj in page_obj %}
-    <div class="col-3 mt-4 mb-3">
-        {% include "partials/_cards.html" %}
+    {% if page_obj %}
+
+        {% for obj in page_obj %}
+        <div class="col-3 mt-4 mb-3">
+            {% include "partials/_cards.html" %}
+        </div>
+        {% endfor %}
+
+    {% else %}
+
+    <div class="data-wrapper-100">
+        <h3 class="center">Nenhum Livro encontrado.</h3>
     </div>
-    {% endfor %}
+
+    {% endif %}
 </div>
 
 {% endblock content %}
