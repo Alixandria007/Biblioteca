@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-b*8!=m_vga&=mteey2$t*&(hc%214srkzr-ofzm98h0nlwbsl#
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -79,7 +79,7 @@ WSGI_APPLICATION = 'project.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgreesql_psycopg2',
+        'ENGINE': 'django.db.backends.postgreesql_psycopg_any',
         'NAME': 'biblioteca_db_jqjs',
         'USER': 'admin',
         'PASSWORD' : '78qGbFxg8ngaTxlZ9R2gO9Fk2VBkOVbQ',
@@ -87,7 +87,6 @@ DATABASES = {
         'PORT': '5432',
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
