@@ -79,8 +79,12 @@ WSGI_APPLICATION = 'project.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgreesql_psycopg2',
+        'NAME': 'biblioteca_db',
+        'USER': 'admin',
+        'PASSWORD' : '78qGbFxg8ngaTxlZ9R2gO9Fk2VBkOVbQ',
+        'HOST': 'dpg-cokl78ocmk4c739hb7tg-a.oregon-postgres.render.com',
+        'PORT': '5432',
     }
 }
 
