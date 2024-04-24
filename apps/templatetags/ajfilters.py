@@ -1,5 +1,6 @@
 from django.template import Library
 from apps.livros import models
+from apps.emprestimos.models import Emprestimo
 
 register = Library()
 
@@ -36,6 +37,10 @@ def contar_paginas_genero(genero_id):
 @register.filter
 def quant_previa(previa):
     return len(previa)
+
+@register.filter
+def contar_emprestimos(id_user):
+    return Emprestimo.objects.filter(leitor__id = id_user).count()
 
 @register.filter
 def formt_cpf(cpf):

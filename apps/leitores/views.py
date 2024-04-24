@@ -4,6 +4,7 @@ from django.contrib import messages
 from django.contrib.auth.models import User
 from django.db.models import Q
 from . import forms, models
+from apps.emprestimos.models import Emprestimo
 
 # Create your views here.
 
@@ -107,10 +108,27 @@ def usuario(request, id):
     return render(request, 'usuario.html', context)
 
 def adicionar_emprestimo(request, id):
+
+    
+
     leitor = models.Leitor.objects.filter(id = id).first()
 
     previa = request.session
     previa['leitor'] = leitor.leitor.username
     request.session.save()
+    
+    if Emprestimo.objects.filter(status__in = ["C", "A"] , leitor__leitor__username =  request.session['leitor']).exists():
+        messages.error(
+            request,
+            'O Leitor já possui um emprestimo pendente.'
+        )
 
-    return redirect(request.META['HTTP_REFERER'])
+        del request.session['leitor']
+        request.session.save()
+        
+        return redirect('livros:realizar_emprestimo')
+
+    if request.session.get("previa_emprestimo"):
+        return redirect("livros:realizar_emprestimo")
+    else:
+        return redirect("livros:index")

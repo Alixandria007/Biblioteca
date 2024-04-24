@@ -9,7 +9,7 @@ from . import models
 
 def criar_emprestimo(request):
 
-    if not request.session['leitor']:
+    if not request.session.get('leitor'):
 
         messages.error(
             request,
@@ -26,7 +26,6 @@ def criar_emprestimo(request):
 
         return redirect('livros:index')
     
-
     leitor = Leitor.objects.filter(leitor__username = request.session['leitor']).first()
     previa = request.session['previa_emprestimo']
     data_final = request.GET.get('data-final')
